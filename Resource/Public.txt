@@ -1,0 +1,5 @@
+*** Keyword ***
+Find Index of Option
+    [Arguments]    ${selectId}    ${optionValue}
+    ${index}    Execute JavaScript    var x = document.getElementById("${selectId}");var txt = "";var i;for (i = 0; i < x.length; i++){console.log(x.options[i].text);if(x.options[i].text ==    "${optionValue}" ){return i;};}
+    [Return]    ${index}

@@ -1,0 +1,4 @@
+*** Settings ***
+Resource          MainPage.txt
+Resource          General.txt
+Resource          LoginPage.txt

@@ -1,0 +1,302 @@
+*** Keywords ***
+Wait Residential Mortgage Page Load
+    Wait Until Element Is Visible    //*[@id="newApplication"]/div[1]/aside/div/div/span    30
+    Sleep    ${Delay}
+    Element Text Should Be    //*[@id="newApplication"]/div[1]/aside/div/div/span    Residential Mortgage
+
+Assert Next Button Active
+    Element Should Be Enabled    //*[@id="applicationWizard"]/div[2]/button[2]
+
+Assert Prev Button Active
+    Element Should Be Enabled    //*[@id="applicationWizard"]/div[2]/button[1]
+
+Assert Next Button Visible
+    Wait Until Element Is Visible    //*[@id="applicationWizard"]/div[2]/button[2]
+
+Assert Prev Button Visible
+    Wait Until Element Is Visible    //*[@id="applicationWizard"]/div[2]/button[1]
+
+Click Next Button On New Application
+    Click Element    //*[@id="applicationWizard"]/div[2]/button[2]
+
+Click Prev Button On New Application
+    Click Element    //*[@id="applicationWizard"]/div[2]/button[1]
+
+Click Reason
+    Click Element    //*[@id="newApplication"]/section/section/section/section/div[2]/div[1]/div/span/span/span/span
+    Sleep    ${Delay}
+
+Input Application Company
+    [Arguments]    ${Company}
+    Input Text    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[1]/div/span/span/input    ${Company}
+    Press Key    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[1]/div/span/span/input    \\13
+
+Input Application Branch
+    [Arguments]    ${Branch}
+    #Double Click Element    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[2]/div/span/span/input
+    Input Text    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[2]/div/span/span/input    ${Branch}
+
+Input Application Reason
+    [Arguments]    ${Reason}
+    Input Text    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[3]/div/span/span/input    ${Reason}
+
+Input Application Class
+    [Arguments]    ${Class}
+    Input Text    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[4]/div/span/span/input    ${Class}
+
+Input Application Purpose
+    [Arguments]    ${Purpose}
+    Input Text    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[5]/div/span/span/input    ${Purpose}
+
+Input Application Sector
+    [Arguments]    ${Sector}
+    Input Text    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[6]/div/span/span/input    ${Sector}
+
+Input Application Source
+    [Arguments]    ${Source}
+    Input Text    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[7]/div/span/span/input    ${Source}
+
+Choose Company By Option
+    [Arguments]    ${option}    ${options}
+    Click Element    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[1]/div/span/span/span/span
+    Sleep    ${Delay}
+    ${index}    Get Index From List    ${options}    ${option}
+    Click Element    //*[@id="company_listbox"]/li[${index}+1]
+
+Choose Branch By Option
+    [Arguments]    ${option}    ${options}
+    Click Element    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[2]/div/span/span/span/span
+    Sleep    ${Delay}
+    ${index}    Get Index From List    ${options}    ${option}
+    Click Element    //*[@id="branch_listbox"]/li[${index}+1]
+
+Choose Reason By Option
+    [Arguments]    ${option}    ${options}
+    Click Element    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[3]/div/span/span/span/span
+    Sleep    ${Delay}
+    ${index}    Get Index From List    ${options}    ${option}
+    Click Element    //*[@id="reason_listbox"]/li[${index}+1]
+
+Choose Class By Option
+    [Arguments]    ${option}    ${options}
+    Click Element    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[4]/div/span/span/span/span
+    Sleep    ${Delay}
+    ${index}    Get Index From List    ${options}    ${option}
+    Click Element    //*[@id="class_listbox"]/li[${index}+1]
+
+Choose Purpose By Option
+    [Arguments]    ${option}    ${options}
+    Click Element    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[5]/div/span/span/span/span
+    Sleep    ${Delay}
+    ${index}    Get Index From List    ${options}    ${option}
+    Click Element    //*[@id="purpose_listbox"]/li[${index}+1]
+
+Choose Sector By Option
+    [Arguments]    ${option}    ${options}
+    Click Element    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[6]/div/span/span/span/span
+    Sleep    ${Delay}
+    ${index}    Get Index From List    ${options}    ${option}
+    Click Element    //*[@id="sector_listbox"]/li[${index}+1]
+
+Choose Source By Option
+    [Arguments]    ${option}    ${options}
+    Click Element    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[7]/div/span/span/span/span
+    Sleep    ${Delay}
+    ${index}    Get Index From List    ${options}    ${option}
+    Click Element    //*[@id="source_listbox"]/li[${index}+1]
+
+Assert New Application tab visible
+    Wait Until Element Is Visible    //*[@id="mainTab"]/li/a/span    30
+    Sleep    ${Delay}
+    Element Text Should Be    //*[@id="mainTab"]/li/a/span    New Application
+
+Assert Application Process Tabs exist
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[1]    General
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[2]    Applicants
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[3]    Employment
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[4]    Assets & Liabilities
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[5]    Application Details
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[6]    Fees
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[7]    Security
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[8]    Affiliates
+
+Assert General tab Active
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[1]    General
+    ${ActiveSign}    Get Element Attribute    //*[@id="applicationWizard"]/div[1]/ul/li[1]@class
+    Should Be Equal    ${ActiveSign}    active
+
+Assert Applicants tab Active
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[2]    Applicants
+    ${ActiveSign}    Get Element Attribute    //*[@id="applicationWizard"]/div[1]/ul/li[2]@class
+    Should Be Equal    ${ActiveSign}    active
+
+Assert Employment tab Active
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[3]    Employment
+    ${ActiveSign}    Get Element Attribute    //*[@id="applicationWizard"]/div[1]/ul/li[3]@class
+    Should Be Equal    ${ActiveSign}    active
+
+Assert AssetsLiabilities tab Active
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[4]    Assets & Liabilities
+    ${ActiveSign}    Get Element Attribute    //*[@id="applicationWizard"]/div[1]/ul/li[4]@class
+    Should Be Equal    ${ActiveSign}    active
+
+Assert ApplicationDetails tab Active
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[5]    Application Details
+    ${ActiveSign}    Get Element Attribute    //*[@id="applicationWizard"]/div[1]/ul/li[5]@class
+    Should Be Equal    ${ActiveSign}    active
+
+Assert Fees tab Active
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[6]    Fees
+    ${ActiveSign}    Get Element Attribute    //*[@id="applicationWizard"]/div[1]/ul/li[6]@class
+    Should Be Equal    ${ActiveSign}    active
+
+Assert Security tab Active
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[7]    Security
+    ${ActiveSign}    Get Element Attribute    //*[@id="applicationWizard"]/div[1]/ul/li[7]@class
+    Should Be Equal    ${ActiveSign}    active
+
+Assert Affiliates tab Active
+    Element Text Should Be    //*[@id="applicationWizard"]/div[1]/ul/li[8]    Affiliates
+    ${ActiveSign}    Get Element Attribute    //*[@id="applicationWizard"]/div[1]/ul/li[8]@class
+    Should Be Equal    ${ActiveSign}    active
+
+Enter General information
+    [Arguments]    @{input}
+    Input Application Company    @{input}[0]
+    Sleep    ${Delay}
+    Click Next Button On New Application
+    Input Application Branch    @{input}[1]
+    Sleep    ${Delay}
+    Input Application Reason    @{input}[2]
+    Sleep    ${Delay}
+    Input Application Class    @{input}[3]
+    Sleep    ${Delay}
+    Input Application Purpose    @{input}[4]
+    Sleep    ${Delay}
+    Input Application Sector    @{input}[5]
+    Sleep    ${Delay}
+    Input Application Source    @{input}[6]
+    Sleep    ${Delay}
+    Screenshot
+    Sleep    2s
+
+Select Options By DropDown On General Page
+    [Arguments]    @{GeneralInfo}
+    ${companys}    Get All Options List    company
+    @{companys}    Split String    ${companys}    ,
+    Choose Company By Option    @{GeneralInfo}[0]    ${companys}
+    Sleep    ${Delay}
+    ${branchs}    Get All Options List    branch
+    @{branchs}    Split String    ${branchs}    ,
+    Choose Branch By Option    @{GeneralInfo}[1]    ${branchs}
+    Sleep    ${Delay}
+    ${reasons}    Get All Options List    reason
+    @{reasons}    Split String    ${reasons}    ,
+    Choose Reason By Option    @{GeneralInfo}[2]    ${reasons}
+    Sleep    ${Delay}
+    ${classs}    Get All Options List    class
+    @{classs}    Split String    ${classs}    ,
+    Choose Class By Option    @{GeneralInfo}[3]    ${classs}
+    Sleep    ${Delay}
+    ${purposes}    Get All Options List    purpose
+    @{purposes}    Split String    ${purposes}    ,
+    Choose Purpose By Option    @{GeneralInfo}[4]    ${purposes}
+    Sleep    ${Delay}
+    ${sectors}    Get All Options List    sector
+    @{sectors}    Split String    ${sectors}    ,
+    Choose Sector By Option    @{GeneralInfo}[5]    ${sectors}
+    Sleep    ${Delay}
+    ${sources}    Get All Options List    source
+    @{sources}    Split String    ${sources}    ,
+    Choose Source By Option    @{GeneralInfo}[6]    ${sources}
+
+Get All Options List
+    [Arguments]    ${id}
+    ${options}    Execute JavaScript    var x = document.getElementById("${id}");var txt = "";var i; for (i =0; i< x.length;i++){if (!!x.options[i].text){txt = txt + x.options[i].text + ","}};return txt;
+    [Return]    ${options}
+
+Verify Changes Are Saved
+    [Arguments]    @{InputList}
+    ${selected}    Execute JavaScript    var x = document.getElementById("company");var txt = x.options[x.selectedIndex].text;return txt;
+    Should Be Equal    @{InputList}[0]    ${selected}
+    ${selected}    Execute JavaScript    var x = document.getElementById("branch");var txt = x.options[x.selectedIndex].text;return txt;
+    Should Be Equal    @{InputList}[1]    ${selected}
+    ${selected}    Execute JavaScript    var x = document.getElementById("reason");var txt = x.options[x.selectedIndex].text;return txt;
+    Should Be Equal    @{InputList}[2]    ${selected}
+    ${selected}    Execute JavaScript    var x = document.getElementById("class");var txt = x.options[x.selectedIndex].text;return txt;
+    Should Be Equal    @{InputList}[3]    ${selected}
+    ${selected}    Execute JavaScript    var x = document.getElementById("purpose");var txt = x.options[x.selectedIndex].text;return txt;
+    Should Be Equal    @{InputList}[4]    ${selected}
+    ${selected}    Execute JavaScript    var x = document.getElementById("sector");var txt = x.options[x.selectedIndex].text;return txt;
+    Should Be Equal    @{InputList}[5]    ${selected}
+    ${selected}    Execute JavaScript    var x = document.getElementById("source");var txt = x.options[x.selectedIndex].text;return txt;
+    Should Be Equal    @{InputList}[6]    ${selected}
+
+Varify error message showing
+    [Arguments]    ${xpath}    ${Message}
+    Page Should Contain Element    ${xpath}
+    ${errorMessage}    Get Element Attribute    ${xpath}@innerText
+    ${ChangederrorMessage}    Execute JavaScript    var str = "${errorMessage}";var txt = str.replace(/ /g, "") ;return txt;
+    Should Be Equal    ${ChangederrorMessage}    ${Message}
+
+Verify Invalid Input On Mandatory Feild Will Got Error And Can Not Go to Next Tab
+    Input Application Company    InvalidCompany
+    Click Next Button On New Application
+    Assert General tab Active
+    Varify error message showing    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[1]/div/span/input-error    Valuenotvalid.Pleaseuseavaluelistedonly.
+    Input Application Company    @{GeneralInfo}[0]
+    Click Element    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[2]/div/span/span/span/span
+    Sleep    ${Delay}
+    Input Application Branch    InvalidBranch
+    Click Next Button On New Application
+    Assert General tab Active
+    Varify error message showing    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[2]/div/span/input-error    Valuenotvalid.Pleaseuseavaluelistedonly.
+    Input Application Branch    @{GeneralInfo}[1]
+    Input Application Reason    InvalidReason
+    Click Next Button On New Application
+    Assert General tab Active
+    Varify error message showing    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[3]/div/span/input-error    Valuenotvalid.Pleaseuseavaluelistedonly.
+    Input Application Reason    @{GeneralInfo}[2]
+    Input Application Class    InvalidClass
+    Click Next Button On New Application
+    Assert General tab Active
+    Varify error message showing    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[4]/div/span/input-error    Valuenotvalid.Pleaseuseavaluelistedonly.
+    Input Application Class    @{GeneralInfo}[3]
+    Input Application Purpose    InvalidPurpose
+    Click Next Button On New Application
+    Assert General tab Active
+    Varify error message showing    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[5]/div/span/input-error    Valuenotvalid.Pleaseuseavaluelistedonly.
+    Input Application Purpose    @{GeneralInfo}[4]
+
+Verify Empty Input On Mandatory Feild Will Got Error And Can Not Go to Next Tab
+    Input Application Company    ${Empty}
+    Click Next Button On New Application
+    Sleep    ${Delay}
+    Assert General tab Active
+    Varify error message showing    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[1]/div/span/input-error    Companyfieldisrequired.
+    Input Application Company    @{GeneralInfo}[0]
+    Click Element    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[2]/div/span/span/span/span
+    Sleep    ${Delay}
+    Click Element    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[2]/div/span/span/span/span
+    Input Application Branch    ${Empty}
+    Click Next Button On New Application
+    Assert General tab Active
+    Varify error message showing    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[2]/div/span/input-error    Branchfieldisrequired.
+    Input Application Branch    @{GeneralInfo}[1]
+    Input Application Reason    ${Empty}
+    Click Next Button On New Application
+    Assert General tab Active
+    Varify error message showing    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[3]/div/span/input-error    Reasonfieldisrequired.
+    Input Application Reason    @{GeneralInfo}[2]
+    Input Application Class    ${Empty}
+    Click Next Button On New Application
+    Assert General tab Active
+    Varify error message showing    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[4]/div/span/input-error    Classfieldisrequired.
+    Input Application Class    @{GeneralInfo}[3]
+    Input Application Purpose    ${Empty}
+    Click Next Button On New Application
+    Assert General tab Active
+    Varify error message showing    //*[@id="newApplication"]/section/section/section/div/section/div[2]/div[5]/div/span/input-error    Purposefieldisrequired.
+    Input Application Purpose    @{GeneralInfo}[4]
+    Click Next Button On New Application
+    Assert Applicants tab Active

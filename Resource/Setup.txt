@@ -1,0 +1,19 @@
+*** Settings ***
+Library           csvLibrary.py
+Library           csvLibraryNoOfRows.py
+Library           String
+Library           Collections
+Library           Selenium2Library
+Library           OperatingSystem
+Resource          KeywordList.txt
+
+*** Variables ***
+${Browser}        chrome
+${SiteUrl}        http://www.thescore.com
+${Delay}          2s
+${user}           johnl
+${password}       johnl
+
+*** Keyword ***
+Screenshot
+    Capture Page Screenshot

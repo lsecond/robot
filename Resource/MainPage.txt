@@ -1,0 +1,9 @@
+*** Keywords ***
+Open Browser to the Main Page
+    open browser    ${SiteUrl}    ${Browser}
+    Maximize Browser Window
+
+Wait Main Page Load
+    Sleep    ${Delay}
+    Wait Until Element Is Visible    css=span.thescore-logo__text    10
+    Sleep    ${Delay}
