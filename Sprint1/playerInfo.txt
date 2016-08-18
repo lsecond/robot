@@ -1,77 +1,53 @@
 *** Settings ***
-Documentation     rondamly choose a player and check if information correct.
+Documentation     1. Navigate to http://www.thescore.com
+...
+...               2. Verify the URL is correct
+...
+...               3. Click on the main menu button
+...
+...               4. Click on “EPL Soccer”
+...
+...               5. Click on “Leaders”
+...
+...               6. Click on a random player
+...
+...               7. Verify that the height and birthdate display correctly (fields exist, proper format, etc)
 Resource          ../Resource/Setup.txt
 
 *** Variables ***
 
 *** Test Cases ***
-Go to Main Page
+Navigate to http://www.thescore.com
     Open Browser to the Main Page
     Wait Main Page Load
+
+Verify the URL is correct
     Verify URL
     Screenshot
 
-Choose EPL Soccer
+Click on the main menu button
     Click MainMenu
     Sleep    ${Delay}
+
+Click on “EPL Soccer”
     Choose Sports    "EPL Soccer"
 
-Randomly Choose a Leader
+Click on “Leaders”
     Click Leaders Button
-    Sleep    ${Delay}
-    Click One Leader Randomly
+    Sleep    5s
 
-Verify that the General screen opens
-    Assert General tab Active
+Click on a random player
+    Click One player Randomly
+    Sleep    10s
+
+Verify that the height and birthdate display correctly (fields exist, proper format, etc)
+    Assert Height And Birthdate exist
+    @{info}    Get Height And Birthday
+    Check Height Format    @{info}[0]
+    Check Birthdate Format    @{info}[1]
     Screenshot
 
 [Teardown]
     Close Browser
 
 *** Keywords ***
-Verify URL
-    Location Should Be    http://www.thescore.com/trending
-
-Click MainMenu
-    Click Element    css=button.site-menu__toggle
-
-Click Leaders Button
-    Click Element    css=i.icon-leaders > span
-
-Choose Sports
-    [Arguments]    ${sport}
-    ${option}    Execute JavaScript    var x = document.getElementsByClassName("site-menu__link-text");console.log(x[0].textContent);var txt = "";var i; for (i =0; i< x.length;i++){if (x[i].textContent==${sport}){return x[i]; break;}};
-    click Element    ${option}
-    Sleep    ${Delay}
-
-Choose Reason By Option
-    [Arguments]    ${option}    ${options}
-    Sleep    ${Delay}
-    ${index}    Get Index From List    ${options}    ${option}
-    Click Element    //*[@id="reason_listbox"]/li[${index}+1]
-
-Get All Options List
-    [Arguments]    ${id}
-    ${options}    Execute JavaScript    var x = document.getElementById("${id}");var txt = "";var i; for (i =0; i< x.length;i++){if (!!x.options[i].text){txt = txt + x.options[i].text + ","}};return txt;
-    [Return]    ${options}
-
-Select Options By DropDown On General Page
-    [Arguments]    @{GeneralInfo}
-    ${companys}    Get All Options List    company
-    @{companys}    Split String    ${companys}    ,
-    Choose Company By Option    @{GeneralInfo}[0]    ${companys}
-
-Verify that General tab contains all fields as per mock up/details and all edits are enforced
-    Verify Invalid Input On Mandatory Feild Will Got Error And Can Not Go to Next Tab
-    Verify Empty Input On Mandatory Feild Will Got Error And Can Not Go to Next Tab
-    #Mutil Data Test For All Field Input Valid Value On General Information Page
-    #${csvdata}=    read csv file    c:\\Robot\\Origination\\TestData\\SPDLND-32.csv
-    # ${csvlength}=    csv length    c:\\Robot\\Origination\\TestData\\SPDLND-32.csv
-    #: FOR    ${index}    IN RANGE    ${csvlength}
-    #\    @{csvDataRow}    Set Variable    ${csvdata[${index}]}
-    # \    Enter General Information    @{csvDataRow}
-    # \    Close Browser
-
-Click One Leader Randomly
-    ${option}    Execute JavaScript    function getRandomInt(min, max) {return Math.floor(Math.random() * (max-min+1))+min;};var x = document.getElementsByClassName("first-and-last-name");console.log(x.length);var size=x.length;var index= getRandomInt(0,size);return x[index];
-    Click element    ${option}

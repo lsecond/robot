@@ -7,3 +7,15 @@ Wait Main Page Load
     Sleep    ${Delay}
     Wait Until Element Is Visible    css=span.thescore-logo__text    10
     Sleep    ${Delay}
+
+Verify URL
+    Location Should Be    http://www.thescore.com/trending
+
+Click MainMenu
+    Click Element    css=button.site-menu__toggle
+
+Choose Sports
+    [Arguments]    ${sport}
+    ${option}    Execute JavaScript    var x = document.getElementsByClassName("site-menu__link-text");console.log(x[0].textContent);var txt = "";var i; for (i =0; i< x.length;i++){if (x[i].textContent==${sport}){return x[i]; break;}};
+    click Element    ${option}
+    Sleep    ${Delay}
