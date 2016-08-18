@@ -1,0 +1,34 @@
+*** Keyword ***
+Click Leaders Button
+    Click Element    css=i.icon-leaders + span
+
+Click One player Randomly
+    Element Should Be Visible    css=h2.leaders-header    30
+    Sleep    5s
+    ${option}    Execute JavaScript    function getRandomInt(min, max) {return Math.floor(Math.random() * (max-min+1))+min;};var x = document.getElementsByClassName("first-and-last-name");console.log(x.length);var size=x.length;var index= getRandomInt(0,size);return x[index];
+    Click element    ${option}
+
+Assert Height And Birthdate exist
+    Element Should Be Visible    css=div.bordered-box-sm    60
+    Sleep    ${Delay}
+    ${playerInfo}    Execute JavaScript    var x = document.getElementsByClassName("info-segment-label");var txt=""; for (i =0; i< x.length;i++){txt = txt + x[i].textContent.trim() + ",";};return txt;
+    @{playerInfo}    Split String    ${playerInfo}    ,
+    Should Be Equal    @{playerInfo}[0]    Height / Weight
+    Should Be Equal    @{playerInfo}[1]    Birthdate
+
+Get Height And Birthday
+    ${Info}    Execute JavaScript    var x = document.getElementsByClassName("info-segment-data");var txt=""; for (i =0; i< x.length;i++){txt = txt + x[i].textContent.trim() + ",";};return txt;
+    @{Info}    Split String    ${Info}    ,
+    [Return]    @{Info}
+
+Check Height Format
+    [Arguments]    ${height}
+    @{heightandweight}    Split String    ${height}    /
+    ${height}    Get From List    ${heightandweight}    0
+    Should Match Regexp    ${height}    ^[3-7]+\'[ ]*([0-9]|1[0,1]){0,1}\"[ ]*$
+
+Check Birthdate Format
+    [Arguments]    ${birthdateAndAge}
+    @{birthdateAndAge}    Split String    ${birthdateAndAge}    (
+    ${birthdate}    Get From List    ${birthdateAndAge}    0
+    Should Match Regexp    ${birthdate}    ^((19|20)\\d\\d)-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])[ ]*$

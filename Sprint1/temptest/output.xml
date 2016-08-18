@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20160817 23:33:57.002" generator="Robot 3.0 (Python 2.7.12 on win32)">
+<suite source="C:\workspace\robot\Sprint1\playerInfo.txt" id="s1" name="playerInfo">
+<test id="s1-t1" name="Navigate to http://www.thescore.com">
+<kw name="Open Browser to the Main Page" library="MainPage">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${SiteUrl}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20160817 23:33:57.159" level="INFO">Opening browser 'chrome' to base url 'http://www.thescore.com'</msg>
+<status status="PASS" endtime="20160817 23:34:05.169" starttime="20160817 23:33:57.158"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20160817 23:34:05.350" starttime="20160817 23:34:05.169"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:05.350" starttime="20160817 23:33:57.158"></status>
+</kw>
+<kw name="Wait Main Page Load" library="MainPage">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${Delay}</arg>
+</arguments>
+<msg timestamp="20160817 23:34:07.352" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" endtime="20160817 23:34:07.352" starttime="20160817 23:34:05.351"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>css=span.thescore-logo__text</arg>
+<arg>10</arg>
+</arguments>
+<status status="PASS" endtime="20160817 23:34:07.417" starttime="20160817 23:34:07.353"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${Delay}</arg>
+</arguments>
+<msg timestamp="20160817 23:34:09.418" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" endtime="20160817 23:34:09.418" starttime="20160817 23:34:07.418"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:09.418" starttime="20160817 23:34:05.350"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:09.419" critical="yes" starttime="20160817 23:33:57.157"></status>
+</test>
+<test id="s1-t2" name="Verify the URL is correct">
+<kw name="Verify URL" library="MainPage">
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>http://www.thescore.com/trending</arg>
+</arguments>
+<msg timestamp="20160817 23:34:09.435" level="INFO">Current location is 'http://www.thescore.com/trending'.</msg>
+<status status="PASS" endtime="20160817 23:34:09.435" starttime="20160817 23:34:09.422"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:09.436" starttime="20160817 23:34:09.421"></status>
+</kw>
+<kw name="Screenshot" library="Setup">
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20160817 23:34:10.133" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20160817 23:34:10.133" starttime="20160817 23:34:09.437"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:10.133" starttime="20160817 23:34:09.436"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:10.133" critical="yes" starttime="20160817 23:34:09.420"></status>
+</test>
+<test id="s1-t3" name="Click on the main menu button">
+<kw name="Click MainMenu" library="MainPage">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>css=button.site-menu__toggle</arg>
+</arguments>
+<msg timestamp="20160817 23:34:10.135" level="INFO">Clicking element 'css=button.site-menu__toggle'.</msg>
+<status status="PASS" endtime="20160817 23:34:10.180" starttime="20160817 23:34:10.135"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:10.180" starttime="20160817 23:34:10.135"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${Delay}</arg>
+</arguments>
+<msg timestamp="20160817 23:34:12.181" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" endtime="20160817 23:34:12.181" starttime="20160817 23:34:10.180"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:12.181" critical="yes" starttime="20160817 23:34:10.134"></status>
+</test>
+<test id="s1-t4" name="Click on “EPL Soccer”">
+<kw name="Choose Sports" library="MainPage">
+<arguments>
+<arg>"EPL Soccer"</arg>
+</arguments>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>var x = document.getElementsByClassName("site-menu__link-text");console.log(x[0].textContent);var txt = "";var i; for (i =0; i&lt; x.length;i++){if (x[i].textContent==${sport}){return x[i]; break;}};</arg>
+</arguments>
+<assign>
+<var>${option}</var>
+</assign>
+<msg timestamp="20160817 23:34:12.186" level="INFO">Executing JavaScript:
+var x = document.getElementsByClassName("site-menu__link-text");console.log(x[0].textContent);var txt = "";var i; for (i =0; i&lt; x.length;i++){if (x[i].textContent=="EPL Soccer"){return x[i]; break;}};</msg>
+<msg timestamp="20160817 23:34:12.201" level="INFO">${option} = &lt;selenium.webdriver.remote.webelement.WebElement (session="ec333ab3c9bc8084ffcc463410e755e0", element="0.059078264823497983-5")&gt;</msg>
+<status status="PASS" endtime="20160817 23:34:12.201" starttime="20160817 23:34:12.185"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${option}</arg>
+</arguments>
+<msg timestamp="20160817 23:34:12.202" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="ec333ab3c9bc8084ffcc463410e755e0", element="0.059078264823497983-5")&gt;'.</msg>
+<status status="PASS" endtime="20160817 23:34:12.251" starttime="20160817 23:34:12.202"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${Delay}</arg>
+</arguments>
+<msg timestamp="20160817 23:34:14.252" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" endtime="20160817 23:34:14.252" starttime="20160817 23:34:12.252"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:14.252" starttime="20160817 23:34:12.184"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:14.252" critical="yes" starttime="20160817 23:34:12.183"></status>
+</test>
+<test id="s1-t5" name="Click on “Leaders”">
+<kw name="Click Leaders Button" library="EPL">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>css=i.icon-leaders + span</arg>
+</arguments>
+<msg timestamp="20160817 23:34:14.256" level="INFO">Clicking element 'css=i.icon-leaders + span'.</msg>
+<status status="PASS" endtime="20160817 23:34:14.815" starttime="20160817 23:34:14.255"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:14.815" starttime="20160817 23:34:14.255"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20160817 23:34:19.816" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20160817 23:34:19.816" starttime="20160817 23:34:14.815"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:19.816" critical="yes" starttime="20160817 23:34:14.253"></status>
+</test>
+<test id="s1-t6" name="Click on a random player">
+<kw name="Click One player Randomly" library="EPL">
+<kw name="Element Should Be Visible" library="Selenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>css=h2.leaders-header</arg>
+<arg>30</arg>
+</arguments>
+<msg timestamp="20160817 23:34:19.818" level="INFO">Verifying element 'css=h2.leaders-header' is visible.</msg>
+<status status="PASS" endtime="20160817 23:34:19.855" starttime="20160817 23:34:19.817"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20160817 23:34:24.855" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20160817 23:34:24.855" starttime="20160817 23:34:19.855"></status>
+</kw>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>function getRandomInt(min, max) {return Math.floor(Math.random() * (max-min+1))+min;};var x = document.getElementsByClassName("first-and-last-name");console.log(x.length);var size=x.length;var index= getRandomInt(0,size);return x[index];</arg>
+</arguments>
+<assign>
+<var>${option}</var>
+</assign>
+<msg timestamp="20160817 23:34:24.857" level="INFO">Executing JavaScript:
+function getRandomInt(min, max) {return Math.floor(Math.random() * (max-min+1))+min;};var x = document.getElementsByClassName("first-and-last-name");console.log(x.length);var size=x.length;var index= getRandomInt(0,size);return x[index];</msg>
+<msg timestamp="20160817 23:34:24.869" level="INFO">${option} = &lt;selenium.webdriver.remote.webelement.WebElement (session="ec333ab3c9bc8084ffcc463410e755e0", element="0.14958661367355952-2")&gt;</msg>
+<status status="PASS" endtime="20160817 23:34:24.870" starttime="20160817 23:34:24.856"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${option}</arg>
+</arguments>
+<msg timestamp="20160817 23:34:24.871" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="ec333ab3c9bc8084ffcc463410e755e0", element="0.14958661367355952-2")&gt;'.</msg>
+<status status="PASS" endtime="20160817 23:34:24.915" starttime="20160817 23:34:24.870"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:24.915" starttime="20160817 23:34:19.817"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10s</arg>
+</arguments>
+<msg timestamp="20160817 23:34:34.916" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" endtime="20160817 23:34:34.916" starttime="20160817 23:34:24.915"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:34.916" critical="yes" starttime="20160817 23:34:19.817"></status>
+</test>
+<test id="s1-t7" name="Verify that the height and birthdate display correctly (fields exist, proper format, etc)">
+<kw name="Assert Height And Birthdate exist" library="EPL">
+<kw name="Element Should Be Visible" library="Selenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>css=div.bordered-box-sm</arg>
+<arg>60</arg>
+</arguments>
+<msg timestamp="20160817 23:34:34.921" level="INFO">Verifying element 'css=div.bordered-box-sm' is visible.</msg>
+<status status="PASS" endtime="20160817 23:34:34.972" starttime="20160817 23:34:34.921"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${Delay}</arg>
+</arguments>
+<msg timestamp="20160817 23:34:36.972" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" endtime="20160817 23:34:36.972" starttime="20160817 23:34:34.972"></status>
+</kw>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>var x = document.getElementsByClassName("info-segment-label");var txt=""; for (i =0; i&lt; x.length;i++){txt = txt + x[i].textContent.trim() + ",";};return txt;</arg>
+</arguments>
+<assign>
+<var>${playerInfo}</var>
+</assign>
+<msg timestamp="20160817 23:34:36.973" level="INFO">Executing JavaScript:
+var x = document.getElementsByClassName("info-segment-label");var txt=""; for (i =0; i&lt; x.length;i++){txt = txt + x[i].textContent.trim() + ",";};return txt;</msg>
+<msg timestamp="20160817 23:34:36.978" level="INFO">${playerInfo} = Height / Weight,Birthdate,Birthplace,</msg>
+<status status="PASS" endtime="20160817 23:34:36.978" starttime="20160817 23:34:36.972"></status>
+</kw>
+<kw name="Split String" library="String">
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<arguments>
+<arg>${playerInfo}</arg>
+<arg>,</arg>
+</arguments>
+<assign>
+<var>@{playerInfo}</var>
+</assign>
+<msg timestamp="20160817 23:34:36.979" level="INFO">@{playerInfo} = [ Height / Weight | Birthdate | Birthplace |  ]</msg>
+<status status="PASS" endtime="20160817 23:34:36.979" starttime="20160817 23:34:36.978"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>@{playerInfo}[0]</arg>
+<arg>Height / Weight</arg>
+</arguments>
+<status status="PASS" endtime="20160817 23:34:36.979" starttime="20160817 23:34:36.979"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>@{playerInfo}[1]</arg>
+<arg>Birthdate</arg>
+</arguments>
+<status status="PASS" endtime="20160817 23:34:36.980" starttime="20160817 23:34:36.979"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:36.980" starttime="20160817 23:34:34.920"></status>
+</kw>
+<kw name="Get Height And Birthday" library="EPL">
+<assign>
+<var>@{info}</var>
+</assign>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>var x = document.getElementsByClassName("info-segment-data");var txt=""; for (i =0; i&lt; x.length;i++){txt = txt + x[i].textContent.trim() + ",";};return txt;</arg>
+</arguments>
+<assign>
+<var>${Info}</var>
+</assign>
+<msg timestamp="20160817 23:34:36.981" level="INFO">Executing JavaScript:
+var x = document.getElementsByClassName("info-segment-data");var txt=""; for (i =0; i&lt; x.length;i++){txt = txt + x[i].textContent.trim() + ",";};return txt;</msg>
+<msg timestamp="20160817 23:34:36.985" level="INFO">${Info} = 5' 7" / 143 lbs,1982-10-07 (33),Beckton, England,</msg>
+<status status="PASS" endtime="20160817 23:34:36.985" starttime="20160817 23:34:36.981"></status>
+</kw>
+<kw name="Split String" library="String">
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<arguments>
+<arg>${Info}</arg>
+<arg>,</arg>
+</arguments>
+<assign>
+<var>@{Info}</var>
+</assign>
+<msg timestamp="20160817 23:34:36.986" level="INFO">@{Info} = [ 5' 7" / 143 lbs | 1982-10-07 (33) | Beckton |  England |  ]</msg>
+<status status="PASS" endtime="20160817 23:34:36.986" starttime="20160817 23:34:36.986"></status>
+</kw>
+<msg timestamp="20160817 23:34:36.986" level="INFO">@{info} = [ 5' 7" / 143 lbs | 1982-10-07 (33) | Beckton |  England |  ]</msg>
+<status status="PASS" endtime="20160817 23:34:36.986" starttime="20160817 23:34:36.980"></status>
+</kw>
+<kw name="Check Height Format" library="EPL">
+<arguments>
+<arg>@{info}[0]</arg>
+</arguments>
+<kw name="Split String" library="String">
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<arguments>
+<arg>${height}</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>@{heightandweight}</var>
+</assign>
+<msg timestamp="20160817 23:34:36.988" level="INFO">@{heightandweight} = [ 5' 7"  |  143 lbs ]</msg>
+<status status="PASS" endtime="20160817 23:34:36.988" starttime="20160817 23:34:36.987"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${heightandweight}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${height}</var>
+</assign>
+<msg timestamp="20160817 23:34:36.988" level="INFO">${height} = 5' 7" </msg>
+<status status="PASS" endtime="20160817 23:34:36.988" starttime="20160817 23:34:36.988"></status>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<arguments>
+<arg>${height}</arg>
+<arg>^[3-7]+\'[ ]*([0-9]|1[0,1]){0,1}\"[ ]*$</arg>
+</arguments>
+<status status="PASS" endtime="20160817 23:34:36.989" starttime="20160817 23:34:36.988"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:36.989" starttime="20160817 23:34:36.987"></status>
+</kw>
+<kw name="Check Birthdate Format" library="EPL">
+<arguments>
+<arg>@{info}[1]</arg>
+</arguments>
+<kw name="Split String" library="String">
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<arguments>
+<arg>${birthdateAndAge}</arg>
+<arg>(</arg>
+</arguments>
+<assign>
+<var>@{birthdateAndAge}</var>
+</assign>
+<msg timestamp="20160817 23:34:36.990" level="INFO">@{birthdateAndAge} = [ 1982-10-07  | 33) ]</msg>
+<status status="PASS" endtime="20160817 23:34:36.990" starttime="20160817 23:34:36.990"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${birthdateAndAge}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${birthdate}</var>
+</assign>
+<msg timestamp="20160817 23:34:36.991" level="INFO">${birthdate} = 1982-10-07 </msg>
+<status status="PASS" endtime="20160817 23:34:36.991" starttime="20160817 23:34:36.990"></status>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<arguments>
+<arg>${birthdate}</arg>
+<arg>^((19|20)\\d\\d)-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])[ ]*$</arg>
+</arguments>
+<status status="PASS" endtime="20160817 23:34:36.992" starttime="20160817 23:34:36.991"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:36.992" starttime="20160817 23:34:36.989"></status>
+</kw>
+<kw name="Screenshot" library="Setup">
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20160817 23:34:37.304" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20160817 23:34:37.304" starttime="20160817 23:34:36.992"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:37.304" starttime="20160817 23:34:36.992"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:37.304" critical="yes" starttime="20160817 23:34:34.918"></status>
+</test>
+<test id="s1-t8" name="[Teardown]">
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160817 23:34:40.484" starttime="20160817 23:34:37.306"></status>
+</kw>
+<status status="PASS" endtime="20160817 23:34:40.485" critical="yes" starttime="20160817 23:34:37.305"></status>
+</test>
+<doc>1. Navigate to http://www.thescore.com
+
+2. Verify the URL is correct
+
+3. Click on the main menu button
+
+4. Click on “EPL Soccer”
+
+5. Click on “Leaders”
+
+6. Click on a random player
+
+7. Verify that the height and birthdate display correctly (fields exist, proper format, etc)</doc>
+<status status="PASS" endtime="20160817 23:34:40.488" starttime="20160817 23:33:57.006"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="8">Critical Tests</stat>
+<stat fail="0" pass="8">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="playerInfo" pass="8">playerInfo</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
