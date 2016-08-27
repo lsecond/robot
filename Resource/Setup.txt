@@ -1,6 +1,4 @@
 *** Settings ***
-Library           csvLibrary.py
-Library           csvLibraryNoOfRows.py
 Library           String
 Library           Collections
 Library           Selenium2Library
