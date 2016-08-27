@@ -6,7 +6,7 @@ Library           OperatingSystem
 Resource          KeywordList.txt
 
 *** Variables ***
-${Browser}        chrome
+${Browser}        firefox
 ${SiteUrl}        http://www.thescore.com
 ${Delay}          2s
 ${user}           johnl
